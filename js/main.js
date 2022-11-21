@@ -1,16 +1,16 @@
 const app = Vue.createApp({
     data: () => ({
-       message: 'Hello Vue.js!'
+       税抜価格: 100
     }),
     computed: {
-        reversedMessage: function() {
-            return this.message.split('').reverse().join('')
+        税込価格: {
+            get: function() {
+                return this.税抜価格 * 1.1
+            },
+            set: function(value) {
+                this.税抜価格 = value / 1.1
+            }
         }
-    },
-    methods:{
-        reversedMessageMethod: function(){
-            return this.message.split('').reverse().join('')
-        }
-    }   
+    }
 })
 app.mount('#app')
